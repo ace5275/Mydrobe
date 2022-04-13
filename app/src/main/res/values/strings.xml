@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Mydrobe</string>
+
+    <!-- textview content -->
+    <string name="home_first_row_text">Make an Outfit or Add New Clothes</string>
+    <string name="home_second_row_text">Settings and Profile</string>
+</resources>
