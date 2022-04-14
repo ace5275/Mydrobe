@@ -1,3 +1,8 @@
+/*
+  MainActivity.java
+  Version: 4.13.2022
+ */
+
 package edu.psu.ist.mydrobe;
 
 import androidx.appcompat.app.AppCompatActivity;
