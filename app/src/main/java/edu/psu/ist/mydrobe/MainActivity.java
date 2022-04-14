@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ImageView profile = findViewById(R.id.profile_button);
         profile.setOnClickListener(this);
+
+        ShapeableImageView carousel = findViewById(R.id.carouselView);
+        carousel.setOnClickListener(this);
     }
 
     @Override
@@ -55,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             handleSettingsButtonClick();
         } else if(eventSourceId == R.id.profile_button){
             handleProfileButtonClick();
+        } else if(eventSourceId == R.id.carouselView){
+            handleCarouselButtonClick();
         } else {
             Log.d(TAG, String.format("Unknown click event source: %s", eventSourceId));
         }
@@ -78,6 +83,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void handleProfileButtonClick(){
+
+    }
+
+    public void handleCarouselButtonClick(){
 
     }
 }
