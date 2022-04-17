@@ -4,4 +4,37 @@
     <!-- textview content -->
     <string name="home_first_row_text">Make an Outfit or Add New Clothes</string>
     <string name="home_second_row_text">Settings and Profile</string>
+
+    <string-array name="clothing_categories">
+        <item>Shirt</item>
+        <item>Pants</item>
+        <item>Skirt</item>
+        <item>Jacket</item>
+        <item>Coat</item>
+        <item>Dress</item>
+        <item>Shoes</item>
+        <item>Jewelery</item>
+        <item>Hat</item>
+    </string-array>
+
+    <string-array name="materials">
+        <item>Cotton</item>
+        <item>Denim</item>
+        <item>Leather</item>
+        <item>Polyester</item>
+        <item>Velvet</item>
+        <item>Silk</item>
+    </string-array>
+
+    <string name="addClothingItemTitle">Add a Clothing Piece</string>
+    <string name="clothingCategory">Clothing Category</string>
+    <string name="brand">Brand</string>
+    <string name="size">Size</string>
+    <string name="seasons">Season(s)</string>
+    <string name="colors">Color(s)</string>
+    <string name="material">Material</string>
+    <string name="patternType">Pattern Type</string>
+    <string name="photoOfClothing">Photo of Clothing</string>
+
+    <string name="addClothingItem">Add Clothing</string>
 </resources>
