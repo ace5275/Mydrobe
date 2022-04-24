@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mydrobe">
         <activity
-            android:name=".CreateClothingItemActivity"
+            android:name=".ClothingList"
+            android:exported="false" />
+        <activity
+            android:name=".AddClothingItemActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

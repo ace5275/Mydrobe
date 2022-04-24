@@ -16,6 +16,8 @@ public class ClothingItem
     private double size;
     private int clothingImageID;
 
+    private static ArrayList<ClothingItem> wardrobe;
+
     public ClothingItem(String brand, String material, String category, String patternType, ArrayList<String> color,
                         ArrayList<String> season, double size, int clothingImageID)
     {
@@ -27,6 +29,8 @@ public class ClothingItem
         this.season = season;
         this.size = size;
         this.clothingImageID = clothingImageID;
+
+        //addClothingItemToList();
     }
 
     public String getBrand()
@@ -107,5 +111,19 @@ public class ClothingItem
     public void setClothingImageID(int clothingImageID)
     {
         this.clothingImageID = clothingImageID;
+    }
+
+    public void addClothingItemToList(ClothingItem newClothingItem)
+    {
+        wardrobe.add(newClothingItem);
+    }
+    public ArrayList<ClothingItem> getWardrobe()
+    {
+        return wardrobe;
+    }
+
+    public void setWardrobe(ArrayList<ClothingItem> wardrobe)
+    {
+        this.wardrobe = wardrobe;
     }
 }
