@@ -83,7 +83,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void handleSettingsButtonClick(){
-
+        Intent settingsItemActivity = new Intent(this, SettingsActivity.class);
+        startActivity(settingsItemActivity);
     }
 
     public void handleProfileButtonClick(){

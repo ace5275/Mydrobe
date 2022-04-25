@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class AddClothingItemActivity extends AppCompatActivity implements View.OnClickListener
 {
     Spinner clothingCategorySpinner, materialSpinner;
-    Wardrobe wardrobe;
+    //Wardrobe wardrobe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -194,9 +194,9 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
         if (eventSource == R.id.addClothingItem_button)
         {
             ClothingItem newClothingItem = new ClothingItem(brand, selectedMaterial, selectedCategory,colorsSelected, seasons, size);
-            wardrobe.addClothingItem(newClothingItem);
+            //wardrobe.addClothingItem(newClothingItem);
 
-            System.out.print(wardrobe);
+            //System.out.print(wardrobe);
 
             finish();
         }
