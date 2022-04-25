@@ -13,12 +13,17 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 public class AddClothingItemActivity extends AppCompatActivity implements View.OnClickListener
 {
     Spinner clothingCategorySpinner, materialSpinner;
+    Wardrobe wardrobe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,7 +35,7 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
         materialSpinner = findViewById(R.id.material_spinner);
 
         //ArrayAdapter is set up so that the spinner
-        //displays the list of clothing types/catageories
+        //displays the list of clothing types/categories
         ArrayAdapter<CharSequence> clothingCategoryAdapter =
                 ArrayAdapter.createFromResource(this,
                         R.array.clothing_categories,
@@ -79,35 +84,120 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
     {
         int eventSource = view.getId();
 
-
         Intent returnIntent = new Intent();
 
-//        String selectedCategory = (String) clothingCategorySpinner.getSelectedItem();
-//        String selectedMaterial = (String) materialSpinner.getSelectedItem();
-//
-//        EditText sizeInput = findViewById(R.id.size_input);
-//        String size = sizeInput.getText().toString();
-//
-//        CheckBox redCheckBox = findViewById(R.id.redCheckBox);
-//        CheckBox blueCheckBox = findViewById(R.id.blueCheckBox);
-//        CheckBox orangeCheckBox = findViewById(R.id.orangeCheckBox);
-//        CheckBox yellowCheckBox = findViewById(R.id.yellowCheckBox);
-//        CheckBox greenCheckBox = findViewById(R.id.greenCheckBox);
-//        CheckBox purpleCheckBox = findViewById(R.id.purpleCheckBox);
-//        CheckBox blackCheckBox = findViewById(R.id.blackCheckBox);
-//        CheckBox greyCheckBox = findViewById(R.id.greyCheckBox2);
-//
-//        boolean redStatus = redCheckBox.isChecked();
-//        boolean blueStatus = blueCheckBox.isChecked();
-//        boolean orangeStatus = orangeCheckBox.isChecked();
-//        boolean yellowStatus = yellowCheckBox.isChecked();
-//        boolean greenStatus = greenCheckBox.isChecked();
-//        boolean purpleStatus = purpleCheckBox.isChecked();
-//        boolean blackStatus = blackCheckBox.isChecked();
-//        boolean greyStatus = greyCheckBox.isChecked();
+        //Retrieving selected clothing type
+        String selectedCategory = (String) clothingCategorySpinner.getSelectedItem();
+
+        //Retrieving selected material type
+        String selectedMaterial = (String) materialSpinner.getSelectedItem();
+
+        //Retrieving size input
+        EditText sizeInput = findViewById(R.id.size_input);
+        double size = Double.parseDouble(sizeInput.getText().toString());
+
+        EditText brandInput = findViewById(R.id.brand_input);
+        String brand = brandInput.getText().toString();
+
+        //Retrieving color selection
+        CheckBox redCheckBox = findViewById(R.id.redCheckBox);
+        CheckBox blueCheckBox = findViewById(R.id.blueCheckBox);
+        CheckBox orangeCheckBox = findViewById(R.id.orangeCheckBox);
+        CheckBox yellowCheckBox = findViewById(R.id.yellowCheckBox);
+        CheckBox greenCheckBox = findViewById(R.id.greenCheckBox);
+        CheckBox purpleCheckBox = findViewById(R.id.purpleCheckBox);
+        CheckBox blackCheckBox = findViewById(R.id.blackCheckBox);
+        CheckBox greyCheckBox = findViewById(R.id.greyCheckBox2);
+
+        ArrayList<String> colorsSelected = new ArrayList<>();
+
+        boolean redStatus = redCheckBox.isChecked();
+        if (true == redStatus)
+        {
+            colorsSelected.add("Red");
+        }
+
+        boolean blueStatus = blueCheckBox.isChecked();
+        if (true == blueStatus)
+        {
+            colorsSelected.add("Blue");
+        }
+
+        boolean orangeStatus = orangeCheckBox.isChecked();
+        if (true == orangeStatus)
+        {
+            colorsSelected.add("Orange");
+        }
+
+        boolean yellowStatus = yellowCheckBox.isChecked();
+        if (true == yellowStatus)
+        {
+            colorsSelected.add("Yellow");
+        }
+
+
+        boolean greenStatus = greenCheckBox.isChecked();
+        if (true == greenStatus)
+        {
+            colorsSelected.add("Green");
+        }
+
+        boolean purpleStatus = purpleCheckBox.isChecked();
+        if (true == purpleStatus)
+        {
+            colorsSelected.add("Purple");
+        }
+        boolean blackStatus = blackCheckBox.isChecked();
+        if (true == blackStatus)
+        {
+            colorsSelected.add("Black");
+        }
+
+        boolean greyStatus = greyCheckBox.isChecked();
+        if (true == greyStatus)
+        {
+            colorsSelected.add("Grey");
+        }
+
+
+        CheckBox fallCheckBox = findViewById(R.id.fallCheckBox);
+        CheckBox winterCheckBox = findViewById(R.id.winterCheckBox);
+        CheckBox springCheckBox = findViewById(R.id.springCheckBox);
+        CheckBox summerCheckBox = findViewById(R.id.summerCheckBox);
+
+        boolean fallStatus = fallCheckBox.isChecked();
+        boolean winterStatus = winterCheckBox.isChecked();
+        boolean springStatus = springCheckBox.isChecked();
+        boolean summerStatus = summerCheckBox.isChecked();
+        ArrayList<String> seasons = new ArrayList<String>();
+
+        if (true == fallStatus)
+        {
+            seasons.add("Fall");
+        }
+
+        if (true == winterStatus)
+        {
+            seasons.add("Winter");
+        }
+
+        if (true == springStatus)
+        {
+            seasons.add("Spring");
+        }
+
+        if (true == summerStatus)
+        {
+            seasons.add("Summer");
+        }
 
         if (eventSource == R.id.addClothingItem_button)
         {
+            ClothingItem newClothingItem = new ClothingItem(brand, selectedMaterial, selectedCategory,colorsSelected, seasons, size);
+            wardrobe.addClothingItem(newClothingItem);
+
+            System.out.print(wardrobe);
+
             finish();
         }
         else if (eventSource == R.id.takePicture_button)
@@ -115,10 +205,6 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
             //Log.d("Camera Button", "It was clicked!");
             Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             mCaptureImage.launch(takePictureIntent);
-        }
-        else
-        {
-            Log.d("Camera Button", "It NOT was clicked!");
         }
 
 

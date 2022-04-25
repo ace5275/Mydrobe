@@ -33,6 +33,20 @@ public class ClothingItem
         //addClothingItemToList();
     }
 
+    public ClothingItem(String brand, String material, String category, ArrayList<String> color,
+                        ArrayList<String> season, double size)
+    {
+        this.brand = brand;
+        this.material = material;
+        this.category = category;
+        this.patternType = patternType;
+        this.color = color;
+        this.season = season;
+        this.size = size;
+
+        //addClothingItemToList();
+    }
+
     public String getBrand()
     {
         return brand;
