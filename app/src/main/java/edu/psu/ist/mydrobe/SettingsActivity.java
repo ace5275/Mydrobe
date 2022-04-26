@@ -36,13 +36,19 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
         int eventSourceId = view.getId();
+        Intent returnIntent = new Intent();
+        SwitchCompat darkModeSwitch = findViewById(R.id.darkModeSwitch);
+        returnIntent.putExtra(MainActivity.RESULT_SETTINGS_CHANGE_THEME, darkModeSwitch.isChecked());
 
         if (eventSourceId == R.id.settings_back_button) {
             handleBackButtonClick();
         } else if (eventSourceId == R.id.applyButton) {
-            handleApplyButtonClick();
+            // onCheckedChanged(darkModeSwitch, darkModeStatus);
+            setResult(RESULT_OK, returnIntent);
+            finish();
         }  else if (eventSourceId == R.id.cancelButton) {
-            handleBackButtonClick();
+            setResult(RESULT_CANCELED);
+            finish();
         }
     }
 
@@ -51,36 +57,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         startActivity(goBack);
     }
 
-    public void handleApplyButtonClick(){
-        Intent apply = new Intent(this, MainActivity.class);
-
-        mGetStatus.launch(apply);
-    }
-
-    ActivityResultLauncher<Intent> mGetStatus = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                int resultCode = result.getResultCode();
-                if (resultCode == RESULT_OK) {
-                    assert result.getData() != null;
-                    boolean darkModeStatus = result.getData().getBooleanExtra(EXTRA_DARK_MODE, false);
-
-                    SwitchCompat darkModeSwitch = findViewById(R.id.darkModeSwitch);
-                    if (darkModeSwitch.isChecked() != darkModeStatus) {
-                        onCheckedChanged(darkModeSwitch, darkModeStatus);
-                    }
-                } else if (resultCode == RESULT_CANCELED) {
-                    Log.d(TAG, "Canceled from ShowProfileDetailsActivity");
-                } else {
-                    Log.d(TAG, String.format("Unknown return code from ShowProfileDetailsActivity: %s", resultCode));
-                }
-            }
-    );
-
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra(MainActivity.RESULT_SETTINGS_CHANGE_THEME, compoundButton.isChecked());
-        setResult(RESULT_OK, returnIntent);
-        finish();
+        findViewById(R.id.settings_activity).setBackgroundColor(getColor(R.color.highlight_blue));
     }
 }
