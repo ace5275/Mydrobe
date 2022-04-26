@@ -122,18 +122,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int resultCode = result.getResultCode();
                 if (resultCode == RESULT_OK) {
                     assert result.getData() != null;
-                    boolean details = result.getData().getBooleanExtra(RESULT_SETTINGS_CHANGE_THEME,
+                    boolean dark = result.getData().getBooleanExtra(RESULT_SETTINGS_CHANGE_THEME,
                             false);
                     boolean clear = result.getData().getBooleanExtra(RESULT_SETTINGS_CLEAR_PREFS,
                             false);
 
-                    if (details){
-                        changeAppTheme();
+                    if (dark){
+                        // changeAppTheme();
+                        setBackgroundColor(R.color.highlight_blue);
+                    } else {
+                        setBackgroundColor(R.color.white);
                     }
                     if (clear){
                         clearAllProfilePreferences();
                     }
-
                 } else if (resultCode == RESULT_CANCELED){
                     Log.d(TAG, "settings activity canceled");
                 }
@@ -144,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return sharedPreferences.getInt(SHARED_PREF_BACKGROUND_COLOR_KEY, DEFAULT_BACKGROUND_COLOR_ID);
     }
 
-    private void changeAppTheme() {
+    /*private void changeAppTheme() {
         int currentColorId = sharedPreferences.getInt(SHARED_PREF_BACKGROUND_COLOR_KEY, DEFAULT_BACKGROUND_COLOR_ID);
         int nextColorId = R.color.white;
 
@@ -152,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             nextColorId = R.color.highlight_blue;
 
         saveAndSetBackgroundColorId(nextColorId);
-    }
+    }*/
 
     private void saveAndSetBackgroundColorId(int colorId) {
         saveBackGroundColorId(colorId);

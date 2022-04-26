@@ -39,10 +39,12 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         Intent returnIntent = new Intent();
         SwitchCompat darkModeSwitch = findViewById(R.id.darkModeSwitch);
         returnIntent.putExtra(MainActivity.RESULT_SETTINGS_CHANGE_THEME, darkModeSwitch.isChecked());
+        Log.d(TAG, "inside onClick in settings");
 
         if (eventSourceId == R.id.settings_back_button) {
             handleBackButtonClick();
         } else if (eventSourceId == R.id.applyButton) {
+            Log.d(TAG, "inside apply if");
             // onCheckedChanged(darkModeSwitch, darkModeStatus);
             setResult(RESULT_OK, returnIntent);
             finish();
