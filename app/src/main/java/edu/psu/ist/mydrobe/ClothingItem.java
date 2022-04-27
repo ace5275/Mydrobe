@@ -112,6 +112,7 @@ public class ClothingItem
         return size;
     }
 
+
     public void setSize(double size)
     {
         this.size = size;
@@ -140,4 +141,6 @@ public class ClothingItem
     {
         this.wardrobe = wardrobe;
     }
+
+
 }

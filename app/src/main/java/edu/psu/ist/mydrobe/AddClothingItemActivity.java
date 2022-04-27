@@ -194,7 +194,7 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
         if (eventSource == R.id.addClothingItem_button)
         {
             ClothingItem newClothingItem = new ClothingItem(brand, selectedMaterial, selectedCategory,colorsSelected, seasons, size);
-            wardrobe.addClothingItem(newClothingItem);
+            wardrobe.add(new ClothingItem);
 
             System.out.print(wardrobe);
 
