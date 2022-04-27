@@ -84,7 +84,7 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
     {
         int eventSource = view.getId();
 
-        Intent intent = new Intent();
+        Intent returnIntent = new Intent();
 
         //Retrieving selected clothing type
         String selectedCategory = (String) clothingCategorySpinner.getSelectedItem();
@@ -194,9 +194,9 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
         if (eventSource == R.id.addClothingItem_button)
         {
             ClothingItem newClothingItem = new ClothingItem(brand, selectedMaterial, selectedCategory,colorsSelected, seasons, size);
-            wardrobe.add(new ClothingItem);
+            wardrobe.addClothingItem(newClothingItem);
 
-            System.out.println(wardrobe);
+            System.out.print(wardrobe);
 
             finish();
         }
