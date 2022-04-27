@@ -44,6 +44,16 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         SwitchCompat dark = findViewById(R.id.darkModeSwitch);
         dark.setOnClickListener(this);
 
+        Intent intent = getIntent();
+        int color = intent.getIntExtra(MainActivity.EXTRA_BACKGROUND_COLOR, 0);
+        Log.d(TAG, String.valueOf(color));
+        if (color == R.color.highlight_blue){
+            dark.setChecked(true);
+            setBackgroundColor(R.color.highlight_blue);
+        } else {
+            dark.setChecked(false);
+            setBackgroundColor(R.color.white);
+        }
     }
 
     @Override
@@ -75,5 +85,9 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
         findViewById(R.id.settings_activity).setBackgroundColor(getColor(R.color.highlight_blue));
+    }
+
+    private void setBackgroundColor(int color) {
+        findViewById(R.id.settings_activity).setBackgroundColor(getColor(color));
     }
 }

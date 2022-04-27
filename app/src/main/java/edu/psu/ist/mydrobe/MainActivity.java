@@ -136,12 +136,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (dark){
                         // changeAppTheme();
                         setBackgroundColor(R.color.highlight_blue);
-                        row1.setTextColor(R.color.light_blue);
-                        row2.setTextColor(R.color.light_blue);
+                        row1.setTextColor(getColor(R.color.light_blue));
+                        row2.setTextColor(getColor(R.color.light_blue));
                     } else {
                         setBackgroundColor(R.color.white);
-                        row1.setTextColor(R.color.highlight_blue);
-                        row2.setTextColor(R.color.highlight_blue);
+                        row1.setTextColor(getColor(R.color.highlight_blue));
+                        row2.setTextColor(getColor(R.color.highlight_blue));
                     }
                     if (clear){
                         clearAllProfilePreferences();
