@@ -56,6 +56,7 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
         materialSpinner.setAdapter(materialAdapter);
 
         findViewById(R.id.takePicture_button).setOnClickListener(this);
+        findViewById(R.id.addClothingItem_button).setOnClickListener(this);
 
     }
     ActivityResultLauncher<Intent> mCaptureImage = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
@@ -210,9 +211,9 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
 
 
 
-        //returnIntent.put
-
-        //finish();
+//        //returnIntent.put
+//
+//        finish();
 
 
     }
