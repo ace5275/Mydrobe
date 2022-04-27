@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 
@@ -31,6 +32,18 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         ImageView back = findViewById(R.id.settings_back_button);
         back.setOnClickListener(this);
 
+        Button apply = findViewById(R.id.applyButton);
+        apply.setOnClickListener(this);
+
+        Button cancel = findViewById(R.id.cancelButton);
+        cancel.setOnClickListener(this);
+
+        Button clear = findViewById(R.id.clearButton);
+        clear.setOnClickListener(this);
+
+        SwitchCompat dark = findViewById(R.id.darkModeSwitch);
+        dark.setOnClickListener(this);
+
     }
 
     @Override
@@ -38,7 +51,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         int eventSourceId = view.getId();
         Intent returnIntent = new Intent();
         SwitchCompat darkModeSwitch = findViewById(R.id.darkModeSwitch);
-        returnIntent.putExtra(MainActivity.RESULT_SETTINGS_CHANGE_THEME, darkModeSwitch.isChecked());
         Log.d(TAG, "inside onClick in settings");
 
         if (eventSourceId == R.id.settings_back_button) {
@@ -46,6 +58,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         } else if (eventSourceId == R.id.applyButton) {
             Log.d(TAG, "inside apply if");
             // onCheckedChanged(darkModeSwitch, darkModeStatus);
+            returnIntent.putExtra(MainActivity.RESULT_SETTINGS_CHANGE_THEME, darkModeSwitch.isChecked());
             setResult(RESULT_OK, returnIntent);
             finish();
         }  else if (eventSourceId == R.id.cancelButton) {
