@@ -196,7 +196,7 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
             ClothingItem newClothingItem = new ClothingItem(brand, selectedMaterial, selectedCategory,colorsSelected, seasons, size);
             wardrobe.add(new ClothingItem);
 
-            System.out.print(wardrobe);
+            System.out.println(wardrobe);
 
             finish();
         }
