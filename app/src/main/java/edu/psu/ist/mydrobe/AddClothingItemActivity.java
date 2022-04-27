@@ -84,7 +84,7 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
     {
         int eventSource = view.getId();
 
-        Intent returnIntent = new Intent();
+        Intent intent = new Intent();
 
         //Retrieving selected clothing type
         String selectedCategory = (String) clothingCategorySpinner.getSelectedItem();
