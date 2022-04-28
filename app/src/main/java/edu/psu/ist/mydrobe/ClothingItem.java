@@ -140,4 +140,9 @@ public class ClothingItem
     {
         this.wardrobe = wardrobe;
     }
+
+    @Override
+    public String toString() {
+        return color.get(0) + " " + category;
+    }
 }
