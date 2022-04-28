@@ -61,7 +61,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         sharedPreferences = getSharedPreferences(getString(R.string.shared_pref_mydrobe), MODE_PRIVATE);
 
-        clearAllProfilePreferences();
+        // clearAllProfilePreferences();
+
+        TextView row1 = findViewById(R.id.home_first_row_text);
+        TextView row2 = findViewById(R.id.home_second_row_text);
+        if (sharedPreferences.getInt(EXTRA_BACKGROUND_COLOR, 0) == R.color.highlight_blue){
+            // changeAppTheme();
+            saveAndSetBackgroundColorId(R.color.highlight_blue);
+            row1.setTextColor(getColor(R.color.light_blue));
+            row2.setTextColor(getColor(R.color.light_blue));
+        } else {
+            saveAndSetBackgroundColorId(R.color.white);
+            row1.setTextColor(getColor(R.color.highlight_blue));
+            row2.setTextColor(getColor(R.color.highlight_blue));
+        }
     }
 
     @Override

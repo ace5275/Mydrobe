@@ -13,10 +13,12 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -58,11 +60,98 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
         findViewById(R.id.takePicture_button).setOnClickListener(this);
         findViewById(R.id.addClothingItem_button).setOnClickListener(this);
 
+        //views and color changes for dark mode
+        //textviews
+        TextView title = findViewById(R.id.addClothingItemTitle_label);
+        TextView cat = findViewById(R.id.clothingCategory_label);
+        TextView brand = findViewById(R.id.brand_label);
+        TextView size = findViewById(R.id.size_label);
+        TextView colors = findViewById(R.id.colors_label);
+        TextView material = findViewById(R.id.material_label);
+        TextView photo = findViewById(R.id.photoOfClothing_label);
+        TextView seasons = findViewById(R.id.seasons_label);
+
+        //checkboxes
+        CheckBox red = findViewById(R.id.redCheckBox);
+        CheckBox orange = findViewById(R.id.orangeCheckBox);
+        CheckBox yellow = findViewById(R.id.yellowCheckBox);
+        CheckBox green = findViewById(R.id.greenCheckBox);
+        CheckBox grey = findViewById(R.id.greyCheckBox2);
+        CheckBox blue = findViewById(R.id.blueCheckBox);
+        CheckBox black = findViewById(R.id.blackCheckBox);
+        CheckBox purple = findViewById(R.id.purpleCheckBox);
+        CheckBox fall = findViewById(R.id.fallCheckBox);
+        CheckBox winter = findViewById(R.id.winterCheckBox);
+        CheckBox spring = findViewById(R.id.springCheckBox);
+        CheckBox summer = findViewById(R.id.summerCheckBox);
+
+        //buttons
+        Button pic = findViewById(R.id.takePicture_button);
+        Button add = findViewById(R.id.addClothingItem_button);
+
         Intent intent = getIntent();
         int color = intent.getIntExtra(MainActivity.EXTRA_BACKGROUND_COLOR, 0);
         setBackgroundColor(color);
         if (color == R.color.highlight_blue){
+            //labels
+            title.setTextColor(getColor(R.color.light_blue));
+            cat.setTextColor(getColor(R.color.light_blue));
+            brand.setTextColor(getColor(R.color.light_blue));
+            size.setTextColor(getColor(R.color.light_blue));
+            colors.setTextColor(getColor(R.color.light_blue));
+            material.setTextColor(getColor(R.color.light_blue));
+            photo.setTextColor(getColor(R.color.light_blue));
+            seasons.setTextColor(getColor(R.color.light_blue));
 
+            //checkboxes
+            red.setTextColor(getColor(R.color.light_blue));
+            orange.setTextColor(getColor(R.color.light_blue));
+            yellow.setTextColor(getColor(R.color.light_blue));
+            green.setTextColor(getColor(R.color.light_blue));
+            grey.setTextColor(getColor(R.color.light_blue));
+            black.setTextColor(getColor(R.color.light_blue));
+            blue.setTextColor(getColor(R.color.light_blue));
+            purple.setTextColor(getColor(R.color.light_blue));
+            fall.setTextColor(getColor(R.color.light_blue));
+            winter.setTextColor(getColor(R.color.light_blue));
+            spring.setTextColor(getColor(R.color.light_blue));
+            summer.setTextColor(getColor(R.color.light_blue));
+
+            //buttons
+            add.setBackgroundColor(getColor(R.color.light_blue));
+            add.setTextColor(getColor(R.color.highlight_blue));
+            pic.setBackgroundColor(getColor(R.color.light_blue));
+            pic.setTextColor(getColor(R.color.highlight_blue));
+        } else {
+            //labels
+            title.setTextColor(getColor(R.color.highlight_blue));
+            cat.setTextColor(getColor(R.color.highlight_blue));
+            brand.setTextColor(getColor(R.color.highlight_blue));
+            size.setTextColor(getColor(R.color.highlight_blue));
+            colors.setTextColor(getColor(R.color.highlight_blue));
+            material.setTextColor(getColor(R.color.highlight_blue));
+            photo.setTextColor(getColor(R.color.highlight_blue));
+            seasons.setTextColor(getColor(R.color.highlight_blue));
+
+            //checkboxes
+            red.setTextColor(getColor(R.color.highlight_blue));
+            orange.setTextColor(getColor(R.color.highlight_blue));
+            yellow.setTextColor(getColor(R.color.highlight_blue));
+            green.setTextColor(getColor(R.color.highlight_blue));
+            grey.setTextColor(getColor(R.color.highlight_blue));
+            black.setTextColor(getColor(R.color.highlight_blue));
+            blue.setTextColor(getColor(R.color.highlight_blue));
+            purple.setTextColor(getColor(R.color.highlight_blue));
+            fall.setTextColor(getColor(R.color.highlight_blue));
+            winter.setTextColor(getColor(R.color.highlight_blue));
+            spring.setTextColor(getColor(R.color.highlight_blue));
+            summer.setTextColor(getColor(R.color.highlight_blue));
+
+            //buttons
+            add.setBackgroundColor(getColor(R.color.highlight_blue));
+            add.setTextColor(getColor(R.color.white));
+            pic.setBackgroundColor(getColor(R.color.highlight_blue));
+            pic.setTextColor(getColor(R.color.white));
         }
 
     }
