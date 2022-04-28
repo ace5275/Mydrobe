@@ -58,6 +58,13 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
         findViewById(R.id.takePicture_button).setOnClickListener(this);
         findViewById(R.id.addClothingItem_button).setOnClickListener(this);
 
+        Intent intent = getIntent();
+        int color = intent.getIntExtra(MainActivity.EXTRA_BACKGROUND_COLOR, 0);
+        setBackgroundColor(color);
+        if (color == R.color.highlight_blue){
+
+        }
+
     }
     ActivityResultLauncher<Intent> mCaptureImage = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>()
@@ -216,5 +223,9 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
 //        finish();
 
 
+    }
+
+    private void setBackgroundColor(int color) {
+        findViewById(R.id.add_clothing_activity).setBackgroundColor(getColor(color));
     }
 }

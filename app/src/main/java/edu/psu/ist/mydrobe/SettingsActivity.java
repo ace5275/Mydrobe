@@ -1,5 +1,7 @@
 package edu.psu.ist.mydrobe;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -46,13 +48,30 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         Intent intent = getIntent();
         int color = intent.getIntExtra(MainActivity.EXTRA_BACKGROUND_COLOR, 0);
+        setBackgroundColor(color);
         Log.d(TAG, String.valueOf(color));
+
+        ImageView two = findViewById(R.id.settings_box1);
+        ImageView four = findViewById(R.id.settings_box2);
+
         if (color == R.color.highlight_blue){
             dark.setChecked(true);
-            setBackgroundColor(R.color.highlight_blue);
+            apply.setBackgroundColor(getColor(R.color.light_blue));
+            apply.setTextColor(getColor(R.color.highlight_blue));
+            cancel.setBackgroundColor(getColor(R.color.light_blue));
+            cancel.setTextColor(getColor(R.color.highlight_blue));
+            back.setImageResource(R.drawable.vector_1_);
+            two.setImageResource(R.drawable.rectangle_26);
+            four.setImageResource(R.drawable.rectangle_26_1);
         } else {
             dark.setChecked(false);
-            setBackgroundColor(R.color.white);
+            apply.setBackgroundColor(getColor(R.color.highlight_blue));
+            apply.setTextColor(getColor(R.color.white));
+            cancel.setBackgroundColor(getColor(R.color.highlight_blue));
+            cancel.setTextColor(getColor(R.color.white));
+            back.setImageResource(R.drawable.leftvector);
+            two.setImageResource(R.drawable.rectangle_24);
+            four.setImageResource(R.drawable.rectangle_25);
         }
     }
 
@@ -74,6 +93,41 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         }  else if (eventSourceId == R.id.cancelButton) {
             setResult(RESULT_CANCELED);
             finish();
+        } else if (eventSourceId == R.id.clearButton){
+            AlertDialog.Builder d = new AlertDialog.Builder(this);
+            d.setTitle("Reset Settings?");
+            d.setMessage("Are you sure you want to reset your settings back to default?");
+
+            d.setPositiveButton("RESET", (dialog, i) -> {
+                //resets dark mode
+                ImageView back = findViewById(R.id.settings_back_button);
+                Button apply = findViewById(R.id.applyButton);
+                Button cancel = findViewById(R.id.cancelButton);
+                SwitchCompat dark = findViewById(R.id.darkModeSwitch);
+                ImageView two = findViewById(R.id.settings_box1);
+                ImageView four = findViewById(R.id.settings_box2);
+
+                setBackgroundColor(R.color.white);
+                dark.setChecked(false);
+                apply.setBackgroundColor(getColor(R.color.highlight_blue));
+                apply.setTextColor(getColor(R.color.white));
+                cancel.setBackgroundColor(getColor(R.color.highlight_blue));
+                cancel.setTextColor(getColor(R.color.white));
+                back.setImageResource(R.drawable.leftvector);
+                two.setImageResource(R.drawable.rectangle_24);
+                four.setImageResource(R.drawable.rectangle_25);
+
+                returnIntent.putExtra(MainActivity.RESULT_SETTINGS_CHANGE_THEME, darkModeSwitch.isChecked());
+                setResult(RESULT_OK, returnIntent);
+                finish();
+            });
+
+            d.setNegativeButton("CANCEL", (dialog, i) -> {
+
+            });
+
+            d.show();
+
         }
     }
 

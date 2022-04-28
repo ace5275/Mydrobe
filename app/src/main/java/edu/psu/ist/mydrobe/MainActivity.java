@@ -93,7 +93,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void handleUploadButtonClick()
     {
         Intent addClothingItemActivity = new Intent(this, AddClothingItemActivity.class);
-        startActivity(addClothingItemActivity);
+
+        int bgc = retrieveBackgroundColorId();
+        addClothingItemActivity.putExtra(EXTRA_BACKGROUND_COLOR, bgc);
+
+        mGetStatus.launch(addClothingItemActivity);
 
     }
 
@@ -135,11 +139,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     if (dark){
                         // changeAppTheme();
-                        setBackgroundColor(R.color.highlight_blue);
+                        saveAndSetBackgroundColorId(R.color.highlight_blue);
                         row1.setTextColor(getColor(R.color.light_blue));
                         row2.setTextColor(getColor(R.color.light_blue));
                     } else {
-                        setBackgroundColor(R.color.white);
+                        saveAndSetBackgroundColorId(R.color.white);
                         row1.setTextColor(getColor(R.color.highlight_blue));
                         row2.setTextColor(getColor(R.color.highlight_blue));
                     }
