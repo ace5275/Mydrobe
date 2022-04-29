@@ -59,6 +59,7 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
 
         findViewById(R.id.takePicture_button).setOnClickListener(this);
         findViewById(R.id.addClothingItem_button).setOnClickListener(this);
+        findViewById(R.id.cancelAddButton).setOnClickListener(this);
 
         //views and color changes for dark mode
         //textviews
@@ -88,6 +89,7 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
         //buttons
         Button pic = findViewById(R.id.takePicture_button);
         Button add = findViewById(R.id.addClothingItem_button);
+        Button cancel = findViewById(R.id.cancelAddButton);
 
         Intent intent = getIntent();
         int color = intent.getIntExtra(MainActivity.EXTRA_BACKGROUND_COLOR, 0);
@@ -122,6 +124,8 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
             add.setTextColor(getColor(R.color.highlight_blue));
             pic.setBackgroundColor(getColor(R.color.light_blue));
             pic.setTextColor(getColor(R.color.highlight_blue));
+            cancel.setBackgroundColor(getColor(R.color.light_blue));
+            cancel.setTextColor(getColor(R.color.highlight_blue));
         } else {
             //labels
             title.setTextColor(getColor(R.color.highlight_blue));
@@ -152,6 +156,8 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
             add.setTextColor(getColor(R.color.white));
             pic.setBackgroundColor(getColor(R.color.highlight_blue));
             pic.setTextColor(getColor(R.color.white));
+            cancel.setBackgroundColor(getColor(R.color.highlight_blue));
+            cancel.setTextColor(getColor(R.color.white));
         }
 
     }
@@ -209,49 +215,49 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
         ArrayList<String> colorsSelected = new ArrayList<>();
 
         boolean redStatus = redCheckBox.isChecked();
-        if (true == redStatus)
+        if (redStatus)
         {
             colorsSelected.add("Red");
         }
 
         boolean blueStatus = blueCheckBox.isChecked();
-        if (true == blueStatus)
+        if (blueStatus)
         {
             colorsSelected.add("Blue");
         }
 
         boolean orangeStatus = orangeCheckBox.isChecked();
-        if (true == orangeStatus)
+        if (orangeStatus)
         {
             colorsSelected.add("Orange");
         }
 
         boolean yellowStatus = yellowCheckBox.isChecked();
-        if (true == yellowStatus)
+        if (yellowStatus)
         {
             colorsSelected.add("Yellow");
         }
 
 
         boolean greenStatus = greenCheckBox.isChecked();
-        if (true == greenStatus)
+        if (greenStatus)
         {
             colorsSelected.add("Green");
         }
 
         boolean purpleStatus = purpleCheckBox.isChecked();
-        if (true == purpleStatus)
+        if (purpleStatus)
         {
             colorsSelected.add("Purple");
         }
         boolean blackStatus = blackCheckBox.isChecked();
-        if (true == blackStatus)
+        if (blackStatus)
         {
             colorsSelected.add("Black");
         }
 
         boolean greyStatus = greyCheckBox.isChecked();
-        if (true == greyStatus)
+        if (greyStatus)
         {
             colorsSelected.add("Grey");
         }
@@ -268,22 +274,22 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
         boolean summerStatus = summerCheckBox.isChecked();
         ArrayList<String> seasons = new ArrayList<String>();
 
-        if (true == fallStatus)
+        if (fallStatus)
         {
             seasons.add("Fall");
         }
 
-        if (true == winterStatus)
+        if (winterStatus)
         {
             seasons.add("Winter");
         }
 
-        if (true == springStatus)
+        if (springStatus)
         {
             seasons.add("Spring");
         }
 
-        if (true == summerStatus)
+        if (summerStatus)
         {
             seasons.add("Summer");
         }
@@ -302,6 +308,8 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
             //Log.d("Camera Button", "It was clicked!");
             Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             mCaptureImage.launch(takePictureIntent);
+        } else if (eventSource == R.id.cancelAddButton){
+            finish();
         }
 
 

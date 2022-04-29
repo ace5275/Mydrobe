@@ -63,6 +63,7 @@
                 android:layout_marginTop="16dp"
                 android:minHeight="48dp"
                 android:spinnerMode="dropdown"
+                android:contentDescription="A dropdown to select the clothing category"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/clothingCategory_label" />
 
@@ -75,6 +76,7 @@
                 android:layout_marginTop="16dp"
                 android:minHeight="48dp"
                 android:spinnerMode="dropdown"
+                android:contentDescription="a dropdown to select the clothing material"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/material_label" />
 
@@ -98,6 +100,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
+                android:hint="enter the brand here"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/brand_label" />
 
@@ -121,6 +124,7 @@
                 android:ems="10"
                 android:inputType="number"
                 android:minHeight="48dp"
+                android:hint="enter the size here"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/size_label" />
 
@@ -267,10 +271,11 @@
                 android:id="@+id/addClothingItem_button"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="128dp"
                 android:text="@string/addClothingItem"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.49"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
@@ -323,6 +328,16 @@
                 android:text="@string/summer"
                 app:layout_constraintStart_toEndOf="@+id/springCheckBox"
                 app:layout_constraintTop_toBottomOf="@+id/winterCheckBox" />
+
+            <Button
+                android:id="@+id/cancelAddButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="CANCEL"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addClothingItem_button" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
