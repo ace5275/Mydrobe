@@ -47,9 +47,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ImageView upload = findViewById(R.id.upload_button);
         upload.setOnClickListener(this);
 
-        ImageView camera = findViewById(R.id.camera_button);
-        camera.setOnClickListener(this);
-
         ImageView settings = findViewById(R.id.settings_button);
         settings.setOnClickListener(this);
 
@@ -85,8 +82,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             handleOutfitsButtonClick();
         } else if (eventSourceId == R.id.upload_button) {
             handleUploadButtonClick();
-        } else if (eventSourceId == R.id.camera_button) {
-            handleCameraButtonClick();
         } else if(eventSourceId == R.id.settings_button) {
             handleSettingsButtonClick();
         } else if(eventSourceId == R.id.profile_button){
