@@ -10,4 +10,10 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
+
+    <style name="SwitchCompatStyle" >
+        <item name="trackTint">@color/highlight_blue</item>
+        <item name="thumbTint">@color/grey</item>
+    </style>
+
 </resources>

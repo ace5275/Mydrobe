@@ -10,12 +10,14 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.imageview.ShapeableImageView;
 
@@ -59,7 +61,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         sharedPreferences = getSharedPreferences(getString(R.string.shared_pref_mydrobe), MODE_PRIVATE);
 
-        clearAllProfilePreferences();
+        // clearAllProfilePreferences();
+
+        TextView row1 = findViewById(R.id.home_first_row_text);
+        TextView row2 = findViewById(R.id.home_second_row_text);
+        if (sharedPreferences.getInt(EXTRA_BACKGROUND_COLOR, 0) == R.color.highlight_blue){
+            // changeAppTheme();
+            saveAndSetBackgroundColorId(R.color.highlight_blue);
+            row1.setTextColor(getColor(R.color.light_blue));
+            row2.setTextColor(getColor(R.color.light_blue));
+        } else {
+            saveAndSetBackgroundColorId(R.color.white);
+            row1.setTextColor(getColor(R.color.highlight_blue));
+            row2.setTextColor(getColor(R.color.highlight_blue));
+        }
     }
 
     @Override
@@ -91,7 +106,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void handleUploadButtonClick()
     {
         Intent addClothingItemActivity = new Intent(this, AddClothingItemActivity.class);
-        startActivity(addClothingItemActivity);
+
+        int bgc = retrieveBackgroundColorId();
+        addClothingItemActivity.putExtra(EXTRA_BACKGROUND_COLOR, bgc);
+
+        mGetStatus.launch(addClothingItemActivity);
 
     }
 
@@ -116,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    @SuppressLint("ResourceAsColor")
     ActivityResultLauncher<Intent> mGetStatus = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -127,11 +147,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     boolean clear = result.getData().getBooleanExtra(RESULT_SETTINGS_CLEAR_PREFS,
                             false);
 
+                    TextView row1 = findViewById(R.id.home_first_row_text);
+                    TextView row2 = findViewById(R.id.home_second_row_text);
+
                     if (dark){
                         // changeAppTheme();
-                        setBackgroundColor(R.color.highlight_blue);
+                        saveAndSetBackgroundColorId(R.color.highlight_blue);
+                        row1.setTextColor(getColor(R.color.light_blue));
+                        row2.setTextColor(getColor(R.color.light_blue));
                     } else {
-                        setBackgroundColor(R.color.white);
+                        saveAndSetBackgroundColorId(R.color.white);
+                        row1.setTextColor(getColor(R.color.highlight_blue));
+                        row2.setTextColor(getColor(R.color.highlight_blue));
                     }
                     if (clear){
                         clearAllProfilePreferences();
@@ -169,8 +196,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setBackgroundColor(int colorId) {
         findViewById(R.id.main_activity).setBackgroundColor(getColor(colorId));
-        findViewById(R.id.settings_activity).setBackgroundColor(getColor(colorId));
-        findViewById(R.id.add_clothing_activity).setBackgroundColor(getColor(colorId));
     }
 
     private void clearAllProfilePreferences() {
