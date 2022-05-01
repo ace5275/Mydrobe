@@ -40,5 +40,6 @@
     <string name="spring">Spring</string>
     <string name="summer">Summer</string>
     <string name="addClothingItem">Add Clothing</string>
+    <string name="cancel">Cancel</string>
     <string name="shared_pref_mydrobe">edu.psu.ist.hcdd340.mydrobe</string>
 </resources>
