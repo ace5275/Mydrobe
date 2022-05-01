@@ -24,10 +24,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class AddClothingItemActivity<Wardrobe> extends AppCompatActivity implements View.OnClickListener
+public class AddClothingItemActivity extends AppCompatActivity implements View.OnClickListener
 {
     Spinner clothingCategorySpinner, materialSpinner;
-    Wardrobe wardrobe;
+    Wardrobe wardrobe = new Wardrobe();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -59,7 +59,11 @@ public class AddClothingItemActivity<Wardrobe> extends AppCompatActivity impleme
         clothingCategorySpinner.setAdapter(clothingCategoryAdapter);
         materialSpinner.setAdapter(materialAdapter);
 
-        findViewById(R.id.takePicture_button).setOnClickListener(this);
+        Button takePicture = findViewById(R.id.takePicture_button);
+        takePicture.setOnClickListener(this);
+
+        Button addClothingItem = findViewById(R.id.addClothingItem_button);
+        addClothingItem.setOnClickListener(this);
 
         //views and color changes for dark mode
         //textviews
@@ -184,20 +188,21 @@ public class AddClothingItemActivity<Wardrobe> extends AppCompatActivity impleme
 
         Intent returnIntent = new Intent();
 
-        //Retrieving selected clothing type
+        //Retrieving selected clothing type from spinner
         String selectedCategory = (String) clothingCategorySpinner.getSelectedItem();
 
-        //Retrieving selected material type
+        //Retrieving selected material type from spinner
         String selectedMaterial = (String) materialSpinner.getSelectedItem();
 
         //Retrieving size input
         EditText sizeInput = findViewById(R.id.size_input);
         double size = Double.parseDouble(sizeInput.getText().toString());
 
+        //Retrieving brand input
         EditText brandInput = findViewById(R.id.brand_input);
         String brand = brandInput.getText().toString();
 
-        //Retrieving color selection
+        //Retrieving views of the checkboxes
         CheckBox redCheckBox = findViewById(R.id.redCheckBox);
         CheckBox blueCheckBox = findViewById(R.id.blueCheckBox);
         CheckBox orangeCheckBox = findViewById(R.id.orangeCheckBox);
@@ -209,49 +214,59 @@ public class AddClothingItemActivity<Wardrobe> extends AppCompatActivity impleme
 
         ArrayList<String> colorsSelected = new ArrayList<>();
 
+        //Retrieving color selection/status from checkboxes
         boolean redStatus = redCheckBox.isChecked();
+        boolean blueStatus = blueCheckBox.isChecked();
+        boolean orangeStatus = orangeCheckBox.isChecked();
+        boolean yellowStatus = yellowCheckBox.isChecked();
+        boolean greenStatus = greenCheckBox.isChecked();
+        boolean purpleStatus = purpleCheckBox.isChecked();
+        boolean blackStatus = blackCheckBox.isChecked();
+        boolean greyStatus = greyCheckBox.isChecked();
+
         if (true == redStatus)
         {
             colorsSelected.add("Red");
         }
 
-        boolean blueStatus = blueCheckBox.isChecked();
+
         if (true == blueStatus)
         {
             colorsSelected.add("Blue");
         }
 
-        boolean orangeStatus = orangeCheckBox.isChecked();
+
         if (true == orangeStatus)
         {
             colorsSelected.add("Orange");
         }
 
-        boolean yellowStatus = yellowCheckBox.isChecked();
+
         if (true == yellowStatus)
         {
             colorsSelected.add("Yellow");
         }
 
 
-        boolean greenStatus = greenCheckBox.isChecked();
+
         if (true == greenStatus)
         {
             colorsSelected.add("Green");
         }
 
-        boolean purpleStatus = purpleCheckBox.isChecked();
+
         if (true == purpleStatus)
         {
             colorsSelected.add("Purple");
         }
-        boolean blackStatus = blackCheckBox.isChecked();
+
+
         if (true == blackStatus)
         {
             colorsSelected.add("Black");
         }
 
-        boolean greyStatus = greyCheckBox.isChecked();
+
         if (true == greyStatus)
         {
             colorsSelected.add("Grey");
@@ -263,11 +278,12 @@ public class AddClothingItemActivity<Wardrobe> extends AppCompatActivity impleme
         CheckBox springCheckBox = findViewById(R.id.springCheckBox);
         CheckBox summerCheckBox = findViewById(R.id.summerCheckBox);
 
+        ArrayList<String> seasons = new ArrayList<String>();
         boolean fallStatus = fallCheckBox.isChecked();
         boolean winterStatus = winterCheckBox.isChecked();
         boolean springStatus = springCheckBox.isChecked();
         boolean summerStatus = summerCheckBox.isChecked();
-        ArrayList<String> seasons = new ArrayList<String>();
+
 
         if (true == fallStatus)
         {
@@ -289,14 +305,20 @@ public class AddClothingItemActivity<Wardrobe> extends AppCompatActivity impleme
             seasons.add("Summer");
         }
 
+        System.out.print("Adding Clothing Item, Hi");
         if (eventSource == R.id.addClothingItem_button)
         {
+
+            Log.d("Add Clohting Item List", brand);
+            Log.d("Add Clohting Item List", selectedMaterial);
+            Log.d("Add Clohting Item List", selectedCategory);
+            Log.d("Add Clohting Item List", colorsSelected.toString());
+            Log.d("Add Clohting Item List", seasons.toString());
             ClothingItem newClothingItem = new ClothingItem(brand, selectedMaterial, selectedCategory,colorsSelected, seasons, size);
-            Set<ClothingItem> wardrobe = new HashSet<>();
 
-            wardrobe.add(newClothingItem);
+            wardrobe.addClothingItem(newClothingItem);
 
-            System.out.println(wardrobe);
+            Log.d("Add Clohting Item List", wardrobe.toString());
 
             finish();
         }
@@ -306,13 +328,6 @@ public class AddClothingItemActivity<Wardrobe> extends AppCompatActivity impleme
             Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             mCaptureImage.launch(takePictureIntent);
         }
-
-
-
-
-        //returnIntent.put
-
-        //finish();
 
 
     }
