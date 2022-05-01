@@ -95,6 +95,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void handleOutfitsButtonClick(){
         //create intent and call startActivity
+        Intent addOutfitActivity = new Intent(this, ClothingListActivity.class);
+        mGetStatus.launch(addOutfitActivity);
+
+
 
     }
 
