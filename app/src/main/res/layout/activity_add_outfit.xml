@@ -198,7 +198,7 @@
             android:id="@+id/cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="17000dp"
             android:text="@string/cancel"
             app:layout_constraintEnd_toStartOf="@+id/createOutfit_button"
             app:layout_constraintStart_toStartOf="parent"
