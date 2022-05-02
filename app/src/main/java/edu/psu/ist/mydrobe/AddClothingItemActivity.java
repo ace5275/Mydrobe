@@ -48,27 +48,6 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
         clothingCategorySpinner = findViewById(R.id.clothingCategory_spinner);
         materialSpinner = findViewById(R.id.material_spinner);
 
-        //ArrayAdapter is set up so that the spinner
-        //displays the list of clothing types/categories
-        ArrayAdapter<CharSequence> clothingCategoryAdapter =
-                ArrayAdapter.createFromResource(this,
-                        R.array.clothing_categories,
-                        android.R.layout.simple_spinner_item);
-        clothingCategoryAdapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
-
-        //ArrayAdapter is set up so that the spinner
-        //displays the list of clothing materials
-        ArrayAdapter<CharSequence> materialAdapter =
-                ArrayAdapter.createFromResource(this,
-                        R.array.materials,
-                        android.R.layout.simple_spinner_item);
-        materialAdapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
-
-        clothingCategorySpinner.setAdapter(clothingCategoryAdapter);
-        materialSpinner.setAdapter(materialAdapter);
-
         Button takePicture = findViewById(R.id.takePicture_button);
         takePicture.setOnClickListener(this);
 
@@ -159,8 +138,26 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
             cancel.setTextColor(getColor(R.color.highlight_blue));
 
             //spinners
-            /*TextView category = findViewById(R.id.clothingCategory_spinner);
-            category.setTextColor(getColor(R.color.light_blue));*/
+            //ArrayAdapter is set up so that the spinner
+            //displays the list of clothing types/categories
+            ArrayAdapter<CharSequence> clothingCategoryAdapter =
+                    ArrayAdapter.createFromResource(this,
+                            R.array.clothing_categories,
+                            R.layout.light_spinner_item);
+            clothingCategoryAdapter.setDropDownViewResource(
+                    android.R.layout.simple_spinner_dropdown_item);
+
+            //ArrayAdapter is set up so that the spinner
+            //displays the list of clothing materials
+            ArrayAdapter<CharSequence> materialAdapter =
+                    ArrayAdapter.createFromResource(this,
+                            R.array.materials,
+                            R.layout.light_spinner_item);
+            materialAdapter.setDropDownViewResource(
+                    android.R.layout.simple_spinner_dropdown_item);
+
+            clothingCategorySpinner.setAdapter(clothingCategoryAdapter);
+            materialSpinner.setAdapter(materialAdapter);
 
             //edittexts
             TextView brandInput = findViewById(R.id.brand_input);
@@ -221,6 +218,28 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
 
             TextView sizeInput = findViewById(R.id.size_input);
             sizeInput.setTextColor(getColor(R.color.highlight_blue));
+
+            //spinners
+            //ArrayAdapter is set up so that the spinner
+            //displays the list of clothing types/categories
+            ArrayAdapter<CharSequence> clothingCategoryAdapter =
+                    ArrayAdapter.createFromResource(this,
+                            R.array.clothing_categories,
+                            R.layout.category_spinner);
+            clothingCategoryAdapter.setDropDownViewResource(
+                    android.R.layout.simple_spinner_dropdown_item);
+
+            //ArrayAdapter is set up so that the spinner
+            //displays the list of clothing materials
+            ArrayAdapter<CharSequence> materialAdapter =
+                    ArrayAdapter.createFromResource(this,
+                            R.array.materials,
+                            R.layout.category_spinner);
+            materialAdapter.setDropDownViewResource(
+                    android.R.layout.simple_spinner_dropdown_item);
+            
+            clothingCategorySpinner.setAdapter(clothingCategoryAdapter);
+            materialSpinner.setAdapter(materialAdapter);
         }
 
     }
