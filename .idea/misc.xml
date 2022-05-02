@@ -13,8 +13,11 @@
         <entry key="..\:/Users/kehax/Documents/SPRING22/HCDD 340/Mydrobe/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/kehax/Documents/SPRING22/HCDD 340/Mydrobe/app/src/main/res/layout/clothing_item_layout.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_add_clothing_item.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login_page.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.276441967026961" />
-        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.4432311238559079" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/login_page.xml" value="0.165" />
       </map>
     </option>
   </component>

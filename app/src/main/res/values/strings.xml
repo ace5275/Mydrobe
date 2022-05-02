@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Mydrobe</string>
 
     <!-- textview content -->
@@ -46,4 +46,8 @@
     <string name="addClothingItem">Add Clothing</string>
     <string name="cancel">Cancel</string>
     <string name="shared_pref_mydrobe">edu.psu.ist.hcdd340.mydrobe</string>
+    <string name="login">LOGIN</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="login" tools:ignore="DuplicateDefinition">LOGIN</string>
 </resources>
