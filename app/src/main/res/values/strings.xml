@@ -27,6 +27,10 @@
     </string-array>
 
     <string name="addClothingItemTitle">Add a Clothing Piece</string>
+    <string name="addOutfitTitle">Create an Outfit</string>
+    <string name="nameOfOutfit">Name of Outfit</string>
+    <string name="selectClothingItems">Select Clothing Items (5 max)</string>
+    <string name="create">Create</string>
     <string name="clothingCategory">Clothing Category</string>
     <string name="brand">Brand</string>
     <string name="size">Size</string>

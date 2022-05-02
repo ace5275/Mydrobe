@@ -143,11 +143,10 @@
                 android:id="@+id/redCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:text="Red"
                 app:layout_constraintEnd_toStartOf="@+id/orangeCheckBox"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/colors_label" />
 
@@ -201,7 +200,7 @@
                 android:id="@+id/blueCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:text="Blue"
                 app:layout_constraintBottom_toBottomOf="@+id/purpleCheckBox"
@@ -297,6 +296,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:text="@string/seasons"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/takePicture_button" />
 
