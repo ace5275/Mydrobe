@@ -17,6 +17,9 @@
             android:name=".AddOutfitActivity"
             android:exported="false" />
         <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".ClothingListActivity"
             android:exported="false" />
         <activity
