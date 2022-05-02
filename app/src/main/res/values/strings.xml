@@ -28,6 +28,12 @@
 
     <string name="addClothingItemTitle">Add a Clothing Piece</string>
     <string name="addOutfitTitle">Create an Outfit</string>
+    <string name="add">Add</string>
+    <string name="pants">Choose a Pair of Pants</string>
+    <string name="shirt">Choose a Shirt/Dress</string>
+    <string name="shoes">Choose a Pair of Shoes</string>
+    <string name="jacket">Choose a Jacket</string>
+    <string name="accessory">Choose an Accessory</string>
     <string name="nameOfOutfit">Name of Outfit</string>
     <string name="selectClothingItems">Select Clothing Items (5 max)</string>
     <string name="create">Create</string>
