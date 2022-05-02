@@ -7,7 +7,9 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,6 +38,7 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
     Spinner clothingCategorySpinner, materialSpinner;
     Wardrobe wardrobe = new Wardrobe();
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -72,6 +75,9 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
         Button addClothingItem = findViewById(R.id.addClothingItem_button);
         addClothingItem.setOnClickListener(this);
 
+        Button cancelButton = findViewById(R.id.cancelAdd_button);
+        cancelButton.setOnClickListener(this);
+
         //views and color changes for dark mode
         //textviews
         TextView title = findViewById(R.id.addClothingItemTitle_label);
@@ -100,6 +106,7 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
         //buttons
         Button pic = findViewById(R.id.takePicture_button);
         Button add = findViewById(R.id.addClothingItem_button);
+        Button cancel = findViewById(R.id.cancelAdd_button);
 
         Intent intent = getIntent();
         int color = intent.getIntExtra(MainActivity.EXTRA_BACKGROUND_COLOR, 0);
@@ -115,7 +122,7 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
             photo.setTextColor(getColor(R.color.light_blue));
             seasons.setTextColor(getColor(R.color.light_blue));
 
-            //checkboxes
+            //checkboxes text color
             red.setTextColor(getColor(R.color.light_blue));
             orange.setTextColor(getColor(R.color.light_blue));
             yellow.setTextColor(getColor(R.color.light_blue));
@@ -129,11 +136,38 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
             spring.setTextColor(getColor(R.color.light_blue));
             summer.setTextColor(getColor(R.color.light_blue));
 
+            //checkboxes boxes
+            red.setButtonTintList(ColorStateList.valueOf(getColor(R.color.light_blue)));
+            yellow.setButtonTintList(ColorStateList.valueOf(getColor(R.color.light_blue)));
+            green.setButtonTintList(ColorStateList.valueOf(getColor(R.color.light_blue)));
+            grey.setButtonTintList(ColorStateList.valueOf(getColor(R.color.light_blue)));
+            black.setButtonTintList(ColorStateList.valueOf(getColor(R.color.light_blue)));
+            blue.setButtonTintList(ColorStateList.valueOf(getColor(R.color.light_blue)));
+            purple.setButtonTintList(ColorStateList.valueOf(getColor(R.color.light_blue)));
+            summer.setButtonTintList(ColorStateList.valueOf(getColor(R.color.light_blue)));
+            fall.setButtonTintList(ColorStateList.valueOf(getColor(R.color.light_blue)));
+            winter.setButtonTintList(ColorStateList.valueOf(getColor(R.color.light_blue)));
+            spring.setButtonTintList(ColorStateList.valueOf(getColor(R.color.light_blue)));
+            orange.setButtonTintList(ColorStateList.valueOf(getColor(R.color.light_blue)));
+
             //buttons
             add.setBackgroundColor(getColor(R.color.light_blue));
             add.setTextColor(getColor(R.color.highlight_blue));
             pic.setBackgroundColor(getColor(R.color.light_blue));
             pic.setTextColor(getColor(R.color.highlight_blue));
+            cancel.setBackgroundColor(getColor(R.color.light_blue));
+            cancel.setTextColor(getColor(R.color.highlight_blue));
+
+            //spinners
+            /*TextView category = findViewById(R.id.clothingCategory_spinner);
+            category.setTextColor(getColor(R.color.light_blue));*/
+
+            //edittexts
+            TextView brandInput = findViewById(R.id.brand_input);
+            brandInput.setTextColor(getColor(R.color.light_blue));
+
+            TextView sizeInput = findViewById(R.id.size_input);
+            sizeInput.setTextColor(getColor(R.color.light_blue));
         } else {
             //labels
             title.setTextColor(getColor(R.color.highlight_blue));
@@ -145,7 +179,7 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
             photo.setTextColor(getColor(R.color.highlight_blue));
             seasons.setTextColor(getColor(R.color.highlight_blue));
 
-            //checkboxes
+            //checkboxes text color
             red.setTextColor(getColor(R.color.highlight_blue));
             orange.setTextColor(getColor(R.color.highlight_blue));
             yellow.setTextColor(getColor(R.color.highlight_blue));
@@ -159,31 +193,50 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
             spring.setTextColor(getColor(R.color.highlight_blue));
             summer.setTextColor(getColor(R.color.highlight_blue));
 
+            //checkbox box
+            red.setButtonTintList(ColorStateList.valueOf(getColor(R.color.highlight_blue)));
+            orange.setButtonTintList(ColorStateList.valueOf(getColor(R.color.highlight_blue)));
+            yellow.setButtonTintList(ColorStateList.valueOf(getColor(R.color.highlight_blue)));
+            green.setButtonTintList(ColorStateList.valueOf(getColor(R.color.highlight_blue)));
+            grey.setButtonTintList(ColorStateList.valueOf(getColor(R.color.highlight_blue)));
+            black.setButtonTintList(ColorStateList.valueOf(getColor(R.color.highlight_blue)));
+            blue.setButtonTintList(ColorStateList.valueOf(getColor(R.color.highlight_blue)));
+            purple.setButtonTintList(ColorStateList.valueOf(getColor(R.color.highlight_blue)));
+            fall.setButtonTintList(ColorStateList.valueOf(getColor(R.color.highlight_blue)));
+            summer.setButtonTintList(ColorStateList.valueOf(getColor(R.color.highlight_blue)));
+            winter.setButtonTintList(ColorStateList.valueOf(getColor(R.color.highlight_blue)));
+            spring.setButtonTintList(ColorStateList.valueOf(getColor(R.color.highlight_blue)));
+
             //buttons
             add.setBackgroundColor(getColor(R.color.highlight_blue));
             add.setTextColor(getColor(R.color.white));
             pic.setBackgroundColor(getColor(R.color.highlight_blue));
             pic.setTextColor(getColor(R.color.white));
+            cancel.setBackgroundColor(getColor(R.color.highlight_blue));
+            cancel.setTextColor(getColor(R.color.white));
+
+            //edittexts
+            TextView brandInput = findViewById(R.id.brand_input);
+            brandInput.setTextColor(getColor(R.color.highlight_blue));
+
+            TextView sizeInput = findViewById(R.id.size_input);
+            sizeInput.setTextColor(getColor(R.color.highlight_blue));
         }
 
     }
     ActivityResultLauncher<Intent> mCaptureImage = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>()
-            {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    int resultCode = result.getResultCode();
-                    if (resultCode == RESULT_OK) {
-                        assert result.getData() != null;
-                        Bitmap imageBitmap = (Bitmap) result.getData().getExtras().get("data");
-                        ImageView imageFromCamera = findViewById(R.id.imageView);
-                        imageFromCamera.setImageBitmap(imageBitmap);
+            result -> {
+                int resultCode = result.getResultCode();
+                if (resultCode == RESULT_OK) {
+                    assert result.getData() != null;
+                    Bitmap imageBitmap = (Bitmap) result.getData().getExtras().get("data");
+                    ImageView imageFromCamera = findViewById(R.id.imageView);
+                    imageFromCamera.setImageBitmap(imageBitmap);
 
-                    } else if (resultCode == RESULT_CANCELED) {
-                        Log.d("AddingClothingItemActivity:", "Canceled without taking an image");
-                    } else {
-                        Log.d("AddingClothingItemActivity:", String.format("Unknown return code from the Camera App: %s", resultCode));
-                    }
+                } else if (resultCode == RESULT_CANCELED) {
+                    Log.d("AddingClothingItemActivity:", "Canceled without taking an image");
+                } else {
+                    Log.d("AddingClothingItemActivity:", String.format("Unknown return code from the Camera App: %s", resultCode));
                 }
             }
     );
@@ -231,54 +284,45 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
         boolean blackStatus = blackCheckBox.isChecked();
         boolean greyStatus = greyCheckBox.isChecked();
 
-        if (true == redStatus)
+        if (redStatus)
         {
             colorsSelected.add("Red");
         }
 
-
-        if (true == blueStatus)
+        if (blueStatus)
         {
             colorsSelected.add("Blue");
         }
 
-
-        if (true == orangeStatus)
+        if (orangeStatus)
         {
             colorsSelected.add("Orange");
         }
 
-
-        if (true == yellowStatus)
+        if (yellowStatus)
         {
             colorsSelected.add("Yellow");
         }
 
-
-
-        if (true == greenStatus)
+        if (greenStatus)
         {
             colorsSelected.add("Green");
         }
 
-
-        if (true == purpleStatus)
+        if (purpleStatus)
         {
             colorsSelected.add("Purple");
         }
 
-
-        if (true == blackStatus)
+        if (blackStatus)
         {
             colorsSelected.add("Black");
         }
 
-
-        if (true == greyStatus)
+        if (greyStatus)
         {
             colorsSelected.add("Grey");
         }
-
 
         CheckBox fallCheckBox = findViewById(R.id.fallCheckBox);
         CheckBox winterCheckBox = findViewById(R.id.winterCheckBox);
@@ -292,22 +336,22 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
         boolean summerStatus = summerCheckBox.isChecked();
 
 
-        if (true == fallStatus)
+        if (fallStatus)
         {
             seasons.add("Fall");
         }
 
-        if (true == winterStatus)
+        if (winterStatus)
         {
             seasons.add("Winter");
         }
 
-        if (true == springStatus)
+        if (springStatus)
         {
             seasons.add("Spring");
         }
 
-        if (true == summerStatus)
+        if (summerStatus)
         {
             seasons.add("Summer");
         }
@@ -329,9 +373,9 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
             //Log.d("Camera Button", "It was clicked!");
             Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             mCaptureImage.launch(takePictureIntent);
+        } else if (eventSource == R.id.cancelAdd_button){
+            finish();
         }
-
-
     }
 
     private void setBackgroundColor(int color) {
