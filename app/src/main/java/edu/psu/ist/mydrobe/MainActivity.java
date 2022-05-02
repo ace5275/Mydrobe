@@ -96,9 +96,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void handleOutfitsButtonClick(){
         //create intent and call startActivity
         Intent addOutfitActivity = new Intent(this, ClothingListActivity.class);
+
+        int bgc = retrieveBackgroundColorId();
+        addOutfitActivity.putExtra(EXTRA_BACKGROUND_COLOR, bgc);
+
         mGetStatus.launch(addOutfitActivity);
-
-
 
     }
 
@@ -113,10 +115,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void handleCameraButtonClick(){
-
-    }
-
     public void handleSettingsButtonClick(){
         Intent settingsItemActivity = new Intent(this, SettingsActivity.class);
 
@@ -127,7 +125,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void handleProfileButtonClick(){
+        Intent profileActivity = new Intent(this, LoginActivity.class);
 
+        int bgc = retrieveBackgroundColorId();
+        profileActivity.putExtra(EXTRA_BACKGROUND_COLOR, bgc);
+
+        mGetStatus.launch(profileActivity);
     }
 
     public void handleCarouselButtonClick(){
