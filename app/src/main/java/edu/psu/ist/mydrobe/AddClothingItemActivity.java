@@ -9,6 +9,7 @@ import androidx.core.content.FileProvider;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -35,8 +36,10 @@ import java.util.Set;
 
 public class AddClothingItemActivity extends AppCompatActivity implements View.OnClickListener
 {
-    Spinner clothingCategorySpinner, materialSpinner;
+    private Spinner clothingCategorySpinner, materialSpinner;
+    private SharedPreferences sharedPreferences;
     Wardrobe wardrobe = new Wardrobe();
+    private static int counter = 0;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -56,6 +59,8 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
 
         Button cancelButton = findViewById(R.id.cancelAdd_button);
         cancelButton.setOnClickListener(this);
+
+        sharedPreferences = getSharedPreferences(getString(R.string.spFileName), MODE_PRIVATE);
 
         //views and color changes for dark mode
         //textviews
@@ -384,6 +389,9 @@ public class AddClothingItemActivity extends AppCompatActivity implements View.O
             wardrobe.addClothingItem(newClothingItem);
 
             Log.d("Add Clohting Item List", wardrobe.toString());
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("Main Wardrobe", wardrobe.toString());
 
             finish();
         }
