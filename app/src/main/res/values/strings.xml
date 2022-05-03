@@ -27,8 +27,10 @@
     </string-array>
 
     <string name="addClothingItemTitle">Add a Clothing Piece</string>
+    <string name="spFileName">Clothing Items Saved</string>
     <string name="addOutfitTitle">Create an Outfit</string>
     <string name="add">Add</string>
+    <string name="goBack">Back</string>
     <string name="pants">Choose a Pair of Pants</string>
     <string name="shirt">Choose a Shirt/Dress</string>
     <string name="shoes">Choose a Pair of Shoes</string>
