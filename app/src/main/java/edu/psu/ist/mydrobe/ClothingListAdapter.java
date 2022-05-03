@@ -1,21 +1,31 @@
 package edu.psu.ist.mydrobe;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 
 import java.util.ArrayList;
 
 public class ClothingListAdapter extends ArrayAdapter<ClothingItem>
 {
+    private static final Object RESULT_OK = 200;
     private Context mContext;
     int mResource;
+    private static final String TAG = "ClothingListAdapter";
 
     public ClothingListAdapter(Context mContext, int mResource, Wardrobe wardrobe)
     {
@@ -24,8 +34,6 @@ public class ClothingListAdapter extends ArrayAdapter<ClothingItem>
         super(mContext, mResource, wardrobe.getOriginalWardobe());
         this.mContext = mContext;
         this.mResource = mResource;
-
-        System.out.print("Clothing LA");
     }
 
     @SuppressLint("ViewHolder")
@@ -33,39 +41,44 @@ public class ClothingListAdapter extends ArrayAdapter<ClothingItem>
     {
         String brand = getItem(position).getBrand();
         String category = getItem(position).getCategory();
-
+        Double size = getItem(position).getSize();
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
         TextView brandView = (TextView)  convertView.findViewById(R.id.textView3);
-        TextView sizeView = (TextView)  convertView.findViewById(R.id.textView4);
+        TextView categoryView = (TextView)  convertView.findViewById(R.id.textView4);
+        RadioButton selectedClothingItemRB = convertView.findViewById(R.id.radioButton);
+
+//        selectedClothingItemRB.setOnClickListener(this);
+
 
         Wardrobe wardrobe = new Wardrobe();
         ArrayList<ClothingItem> clothingItemsArray = wardrobe.getOriginalWardobe();
-//        for (int i =0; i < clothingItemsArray.size();i++)
-//        {
-//            brandView.setText(clothingItemsArray.get(i).getBrand());
-//            sizeView.setText(clothingItemsArray.get(i).getCategory());
-//        }
-        brandView.setText(brand);
-        sizeView.setText(category);
 
-        //        ImageView clothingImage = (ImageView) convertView.findViewById(R.id.imageView);
-//
-//        txtView1.setText("Hello");
-//        txtView2.setText("Is this working?");
-//
-////          String brand = getItem(position).getBrand();
-////        double size = getItem(position).getSize();
-////        String material = getItem
-////
-////        ClothingItem clothingItem = new ClothingItem(brand, selectedMaterial, selectedCategory,colorsSelected, seasons, size);
-//        LayoutInflater inflater = LayoutInflater.from(mContext);
-//        convertView = inflater.inflate(mResource, parent, false);
-//
-////        TextView tvName = (T)
+
+        brandView.setText("Brand: " + brand);
+        categoryView.setText(category + ", Size " + size);
+
 
         return convertView;
     }
+
+
+//    @Override
+//    public void onClick(View view, Activity mActivity) {
+//
+//        int position = (Integer) view.getTag();
+//        ClothingItem selectedClothingItem = getItem(position);
+//
+//        Intent ClothingItemIntent = new Intent();
+//        ClothingItemIntent.putExtra("New Selected Outfit", selectedClothingItem.toString());
+//
+//        setResult(RESULT_OK, ClothingItemIntent);
+//        finish();
+//
+//
+//    }
+
+
 }
