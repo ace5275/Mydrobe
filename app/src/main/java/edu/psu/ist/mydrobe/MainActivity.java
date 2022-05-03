@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int eventSourceId = view.getId();
 
         if (eventSourceId == R.id.outfits_button) {
+            Log.d(TAG, String.format("handle outfits: %s", eventSourceId));
             handleOutfitsButtonClick();
         } else if (eventSourceId == R.id.upload_button) {
             handleUploadButtonClick();
@@ -94,8 +95,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void handleOutfitsButtonClick(){
-        //create intent and call startActivity
-        Intent addOutfitActivity = new Intent(this, ClothingListActivity.class);
+        //create intent and launch
+        Intent addOutfitActivity = new Intent(this, AddOutfitActivity.class);
 
         int bgc = retrieveBackgroundColorId();
         addOutfitActivity.putExtra(EXTRA_BACKGROUND_COLOR, bgc);
