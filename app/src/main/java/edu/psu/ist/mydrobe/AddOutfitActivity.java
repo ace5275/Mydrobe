@@ -132,44 +132,42 @@ public class AddOutfitActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        int v = view.getId();
-        if (v == R.id.addAccessory_button){
-            handleAccessory();
-        } else if (v == R.id.addJacket_button){
-            handleJacket();
-        } else if (v == R.id.addPants_button){
-            handlePants();
-        } else if (v == R.id.addShirt_button){
-            handleShirt();
-        } else if (v == R.id.addShoes_button){
-            handleShoes();
-        } else if (v == R.id.createOutfit_button){
-            handleCreate();
-        } else if (v == R.id.cancelOutfit_button){
-            handleCancel();
+        int eventSource = view.getId();
+
+        Intent viewClothingItems = new Intent(this, ClothingListActivity.class);
+
+        if (eventSource == R.id.addShirt_button || eventSource == R.id.addPants_button
+                ||eventSource == R.id.addJacket_button || eventSource == R.id.addAccessory_button
+                ||eventSource == R.id.addShoes_button)
+        {
+            startActivity(viewClothingItems);
+        }
+        else if (eventSource == R.id.cancel_button)
+        {
+            finish();
         }
     }
 
-    private void handleCancel() {
-        finish();
-    }
-
-    private void handleCreate() {
-        finish();
-    }
-
-    private void handleShoes() {
-    }
-
-    private void handleShirt() {
-    }
-
-    private void handlePants() {
-    }
-
-    private void handleJacket() {
-    }
-
-    private void handleAccessory() {
-    }
+//    private void handleCancel() {
+//        finish();
+//    }
+//
+//    private void handleCreate() {
+//        finish();
+//    }
+//
+//    private void handleShoes() {
+//    }
+//
+//    private void handleShirt() {
+//    }
+//
+//    private void handlePants() {
+//    }
+//
+//    private void handleJacket() {
+//    }
+//
+//    private void handleAccessory() {
+//    }
 }
